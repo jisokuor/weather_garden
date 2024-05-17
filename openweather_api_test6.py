@@ -104,7 +104,7 @@ def commit_and_push_changes():
     subprocess.run(['git', 'push', 'origin', 'main'], check=True)
 
 def main():
-    api_key = "918403ad1a1997bf8650f34d05c9c9a4"
+    api_key = "XXXXXXXXXXXXXXXXXXXXXXXX"
     print(system_prompt_weather)
     try:
         weather_data = test_openweathermap_api(api_key)
