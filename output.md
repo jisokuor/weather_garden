@@ -2,24 +2,24 @@
 ## Date: May 27, 2024
 
 ## Weather Forecast
-**Current Weather:**
+**Date and Time:** May 27, 2024, 21:00:00
 
-As of May 27th, 2024, at 21:00:00 UTC,
+**Temperature**: Current - 16.16°C, Feels like - 16.05°C, Min - 14.93°C, Max - 16.16°C
 
-* **Temperature:** Currently 16.16°C (61.1°F), feels like 16.05°C (60.9°F). The minimum temperature recorded today was 14.93°C (58.7°F), while the maximum temperature reached was also 16.16°C (61.1°F).
-* **Weather Conditions:** Overcast clouds.
-* **Wind:** Wind speed is currently at 1.91 meters per second (4.3 miles per hour) blowing from a direction of 239 degrees, with gusts reaching up to 5.12 meters per second (11.4 miles per hour).
-* **Visibility:** The visibility is excellent, with a distance of 10 kilometers (6.2 miles).
+**Weather Conditions**: Overcast clouds
 
-**Additional Details:**
+**Wind**: Speed - 1.91 meters per second, Direction - 239 degrees, Gust - 5.12 meters per second
 
-* **Humidity:** 85%
-* **Pressure:** 1022 millibars
+**Visibility**: 10 kilometers
 
-Please note that these readings are accurate as of the specified time and may change over the course of the day.
+**Humidity**: 85%
+
+**Pressure**: 1022 millibars (sea level) and 1018 millibars (ground level)
+
+Note: The weather data is in 3-hour intervals, so the forecast will be based on the first available time stamp which is May 27, 2024, 21:00:00.
 ## Gardening Tips
 **Static Tips for May:**
 This is the main planting month. Plant potatoes, carrots, and beets. Harden off indoor-grown seedlings before transplanting them outside. Start planting summer flowers.
 
 **Weather Considerations:**
-The weather seems unusually warm for this time of year. However, it's still advisable to follow the expert recommendations and avoid planting outdoors.
+The weather seems suitable for outdoor planting. Follow the expert recommendations for planting and gardening activities.
