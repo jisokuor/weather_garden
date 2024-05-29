@@ -40,20 +40,37 @@ def query_ollama(prompt, system_message, model_url):
         raise Exception(f"API call failed: {response.status_code} - {response.text}")
 
 
+
 def test_openweathermap_api(api_key):
     lat = "60.4720597"
     lon = "25.7878047"
     exclude = "minutely,daily"
     url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&exclude={exclude}&appid={api_key}&units=metric"
-    response = requests.get(url)
 
-    if response.status_code == 200:
-        print("API key is working!")
-        return response.json()
-    elif response.status_code == 401:
-        raise Exception("Invalid API key.")
-    else:
-        raise Exception(f"Failed to retrieve data. HTTP Status code: {response.status_code}")
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raises an exception for non-2xx status codes
+        weather_data = response.json()
+        print("API key is working!",response)
+        return weather_data
+    except requests.RequestException as e:
+        print(f"Error while retrieving data: {e}")
+        raise  # Re-raise the exception for the caller to handle
+
+#def test_openweathermap_api(api_key):
+#    lat = "60.4720597"
+#    lon = "25.7878047"
+#    exclude = "minutely,daily"
+#    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&exclude={exclude}&appid={api_key}&units=metric"
+#    response = requests.get(url)
+#
+#    if response.status_code == 200:
+#        print("API key is working!")
+#        return response.json()
+#    elif response.status_code == 401:
+#        raise Exception("Invalid API key.")
+#    else:
+#        raise Exception(f"Failed to retrieve data. HTTP Status code: {response.status_code}")
 
 
 def get_next_3_hours_data(weather_data):
