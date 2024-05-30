@@ -4,16 +4,13 @@ cd /d G:\Pycharm\Pycharmprojects\Agents
 REM Activate the virtual environment
 call G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\activate.bat
 
-REM Check if the virtual environment is activated
-where python
-
 REM Run the Python script
 python openweather_api_test7.py
 
-REM Deactivate the virtual environment
-deactivate
+REM Deactivate the virtual environment (optional, if deactivate.bat exists)
+call deactivate.bat
 
-REM Commit and push changes to the Git repository
+REM Pull the latest changes, add, commit, and push the updates
 git pull origin main --allow-unrelated-histories
 git add -A
 git commit -m "Daily weather and gardening tips update"
