@@ -137,7 +137,7 @@ def text_to_speech(text, filename='forecast.mp3'):
 def commit_and_push_changes():
     import subprocess
     subprocess.run(["git", "pull", "origin", "main", "--allow-unrelated-histories"])
-    subprocess.run(["git", "add", "-f", "index.html", "forecast.mp3", "gardening_tips.mp3", "output.md"])
+    subprocess.run(["git", "add", "-f", "index.html", "forecast.mp3", "gardening_tips.mp3", "output.md","openweather_api_test7.py","requirements.txt","run_daily_update.bat"])
     subprocess.run(["git", "commit", "-m", "Daily weather and gardening tips update"])
     subprocess.run(["git", "push", "origin", "main"])
 
