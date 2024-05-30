@@ -36,12 +36,12 @@ web-qa.ipynb
 !requirements.txt
 
 # Ignore specific directories
+Lib/
+Scripts/
 .idea/
 etc/
 include/
-Lib/
 Library/
-Scripts/
 share/
 weather_garden/
 extensions/
