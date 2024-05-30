@@ -12,8 +12,7 @@
 !output.md
 !README.md
 
-# Ignore Py files except the specific ones
-
+# Ignore specific Python files
 config.py
 ai_discussion.py
 ai_discussion2.py
@@ -32,12 +31,11 @@ openweather api test5.py
 web-qa.py
 web-qa.ipynb
 
-# Ignore txt files except the specific ones
-
+# Ignore specific txt files except the specific ones
 *.txt
 !requirements.txt
 
-# Ignore txt files except the specific ones
+# Ignore specific directories
 .idea/
 etc/
 include/
@@ -48,6 +46,5 @@ share/
 weather_garden/
 extensions/
 
-# Ignore cfg files except the specific ones
+# Ignore specific cfg files
 pyvenv.cfg
-
