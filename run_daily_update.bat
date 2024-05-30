@@ -4,11 +4,14 @@ cd /d G:\Pycharm\Pycharmprojects\Agents
 REM Activate the virtual environment
 call G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\activate.bat
 
+REM Check if the virtual environment is activated
+where python
+
 REM Run the Python script
 python openweather_api_test7.py
 
 REM Deactivate the virtual environment
-call deactivate
+deactivate
 
 REM Commit and push changes to the Git repository
 git pull origin main --allow-unrelated-histories
