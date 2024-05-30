@@ -166,7 +166,7 @@ def main():
         text_to_speech(dynamic_gardening_tips, filename='gardening_tips.mp3')
 
         # Save the results to a Markdown file
-        with open('output.md', 'w', encoding='utf-8') as file:
+        with open('output.md', 'w', encoding='utf-8', errors='replace') as file:
             file.write("#Weather Forecast and Gardening Tips\n")
             file.write("## Date: " + datetime.now().strftime("%B %d, %Y") + "\n")
             file.write("\n## Weather Forecast\n")
@@ -180,7 +180,7 @@ def main():
         clock_code = '<iframe src="https://indify.co/widgets/live/clock/mC6PDMEhkRcvdRHnRtuG" style="border:none;width:100%;height:100px;"></iframe>'
 
         # Save the results to an HTML file with the embedded clock code
-        with open('index.html', 'w', encoding='utf-8') as file:
+        with open('index.html', 'w', encoding='utf-8', errors='replace') as file:
             file.write("<!DOCTYPE html>\n")
             file.write("<html lang='en'>\n")
             file.write("<head>\n")
@@ -198,7 +198,7 @@ def main():
             file.write("<p>" + daily_forecast.replace('\n', '<br>') + "</p>\n")
             file.write("<h3>Gardening Tips</h3>\n")
             file.write("<p>" + conditional_gardening_tips.replace('\n', '<br>') + "</p>\n")
-            file.write("<h3>Dynamic Gardening Tips</3>\n")
+            file.write("<h3>Dynamic Gardening Tips</h3>\n")
             file.write("<p>" + dynamic_gardening_tips.replace('\n', '<br>') + "</p>\n")
             file.write("<h3>Current Time</h3>\n")
             file.write("</body>\n")
