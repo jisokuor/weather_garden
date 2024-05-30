@@ -1,0 +1,35 @@
+# Ignore all .mp3 files except the specific ones
+*.mp3
+!forecast.mp3
+!gardening_tips.mp3
+
+# Ignore specific HTML files except the specific ones
+*.html
+!index.html
+
+# Ignore markdown files except the specific ones
+*.md
+!output.md
+!README.md
+
+# Ignore Py files except the specific ones
+
+config.py
+ai_discussion.py
+ai_discussion2.py
+ai_discussion3.py
+ai_discussion4.py
+ai_discussion5.py
+!openweather_api_test7.py
+
+# Ignore txt files except the specific ones
+
+*.txt
+!requirements.txt
+.idea/
+etc/
+include/
+Lib/
+Library/
+Scripts/
+share/
