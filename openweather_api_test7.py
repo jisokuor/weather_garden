@@ -40,7 +40,6 @@ def query_ollama(prompt, system_message, model_url):
         raise Exception(f"API call failed: {response.status_code} - {response.text}")
 
 
-
 def test_openweathermap_api(api_key):
     lat = "60.4720597"
     lon = "25.7878047"
@@ -51,26 +50,11 @@ def test_openweathermap_api(api_key):
         response = requests.get(url)
         response.raise_for_status()  # Raises an exception for non-2xx status codes
         weather_data = response.json()
-        print("API key is working!",response)
+        print("API key is working!", response)
         return weather_data
     except requests.RequestException as e:
         print(f"Error while retrieving data: {e}")
         raise  # Re-raise the exception for the caller to handle
-
-#def test_openweathermap_api(api_key):
-#    lat = "60.4720597"
-#    lon = "25.7878047"
-#    exclude = "minutely,daily"
-#    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&exclude={exclude}&appid={api_key}&units=metric"
-#    response = requests.get(url)
-#
-#    if response.status_code == 200:
-#        print("API key is working!")
-#        return response.json()
-#    elif response.status_code == 401:
-#        raise Exception("Invalid API key.")
-#    else:
-#        raise Exception(f"Failed to retrieve data. HTTP Status code: {response.status_code}")
 
 
 def get_next_3_hours_data(weather_data):
@@ -196,8 +180,8 @@ def main():
         text_to_speech(dynamic_gardening_tips, filename='gardening_tips.mp3')
 
         # Save the results to a Markdown file
-        with open('output.md', 'w') as file:
-            file.write("# Daily Weather Forecast and Gardening Tips\n")
+        with open('output.md', 'w', encoding='utf-8') as file:
+            file.write("#Weather Forecast and Gardening Tips\n")
             file.write("## Date: " + datetime.now().strftime("%B %d, %Y") + "\n")
             file.write("\n## Weather Forecast\n")
             file.write(daily_forecast)
@@ -210,13 +194,13 @@ def main():
         clock_code = '<iframe src="https://indify.co/widgets/live/clock/mC6PDMEhkRcvdRHnRtuG" style="border:none;width:100%;height:100px;"></iframe>'
 
         # Save the results to an HTML file with the embedded clock code
-        with open('index.html', 'w') as file:
+        with open('index.html', 'w', encoding='utf-8') as file:
             file.write("<!DOCTYPE html>\n")
             file.write("<html lang='en'>\n")
             file.write("<head>\n")
             file.write("    <meta charset='UTF-8'>\n")
             file.write("    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n")
-            file.write("    <title>Daily Weather Forecast and Gardening Tips</title>\n")
+            file.write("    <title>Weather Forecast and Gardening Tips</title>\n")
             file.write(
                 "    <style> body { font-family: Arial, sans-serif; margin: 20px; } h1 { color: #2E8B57; } </style>\n")
             file.write("</head>\n")
@@ -243,4 +227,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 

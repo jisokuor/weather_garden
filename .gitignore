@@ -20,12 +20,24 @@ ai_discussion2.py
 ai_discussion3.py
 ai_discussion4.py
 ai_discussion5.py
+example usage2.py
+multi_agent_experiment.py
+Notion_experiment.py
+openweather api test.py
+openweather api test2.py
+openweather api test3.py
+openweather api test4.py
+openweather api test5.py
 !openweather_api_test7.py
+web-qa.py
+web-qa.ipynb
 
 # Ignore txt files except the specific ones
 
 *.txt
 !requirements.txt
+
+# Ignore txt files except the specific ones
 .idea/
 etc/
 include/
@@ -33,3 +45,9 @@ Lib/
 Library/
 Scripts/
 share/
+weather_garden/
+extensions/
+
+# Ignore cfg files except the specific ones
+pyvenv.cfg
+
