@@ -4,7 +4,6 @@ import config
 import requests
 import json
 from gtts import gTTS
-import pygame
 from datetime import datetime
 
 # Display the system prompt for the user
@@ -15,7 +14,6 @@ As a certified weather forecast expert using the metric system, I am equipped to
 system_prompt_gardening = """
 As the Gardener of the Year of Porvoo, I offer expert gardening tips and recommendations based on the current weather forecast.
 """
-
 
 def query_ollama(prompt, system_message, model_url):
     data = {
@@ -39,7 +37,6 @@ def query_ollama(prompt, system_message, model_url):
     else:
         raise Exception(f"API call failed: {response.status_code} - {response.text}")
 
-
 def test_openweathermap_api(api_key):
     lat = "60.4720597"
     lon = "25.7878047"
@@ -56,13 +53,11 @@ def test_openweathermap_api(api_key):
         print(f"Error while retrieving data: {e}")
         raise  # Re-raise the exception for the caller to handle
 
-
 def get_next_3_hours_data(weather_data):
     return {
         "list": weather_data["list"][:3],
         "city": weather_data["city"]
     }
-
 
 def translate_weather_data(weather_data):
     weather_data_json = json.dumps(weather_data, indent=2)
@@ -81,7 +76,6 @@ def translate_weather_data(weather_data):
         f"The data is found inside this: {weather_data_json}. Translate it to the actual weather forecast. "
         f"The data is derived today from openweather.com and is up to date.")
     return query_ollama(prompt, system_prompt_weather, config.MODEL_URL)
-
 
 def gardening_tips(weather_data):
     weather_data_json = json.dumps(weather_data, indent=2)
@@ -104,7 +98,6 @@ def gardening_tips(weather_data):
         f"Weather data (in JSON): {weather_data_json}")
 
     return query_ollama(prompt, system_prompt_gardening, config.MODEL_URL)
-
 
 def get_conditional_gardening_tips(month, weather_data):
     # Static expert advice for each month
@@ -136,16 +129,10 @@ def get_conditional_gardening_tips(month, weather_data):
     combined_tips = f"**Static Tips for {month}:**\n{static_tips}\n\n**Weather Considerations:**\n{weather_advice}"
     return combined_tips
 
-
 def text_to_speech(text, filename='forecast.mp3'):
     tts = gTTS(text=text, lang='en')
     tts.save(filename)
-    pygame.mixer.init()
-    pygame.mixer.music.load(filename)
-    pygame.mixer.music.play()
-    while pygame.mixer.music.get_busy():
-        continue
-
+    # Removed the pygame code to play the file
 
 def commit_and_push_changes():
     import subprocess
@@ -153,7 +140,6 @@ def commit_and_push_changes():
     subprocess.run(["git", "add", "-f", "index.html", "forecast.mp3", "gardening_tips.mp3", "output.md"])
     subprocess.run(["git", "commit", "-m", "Daily weather and gardening tips update"])
     subprocess.run(["git", "push", "origin", "main"])
-
 
 def main():
     api_key = config.OPEN_WEATHER_MAP_API_KEY
@@ -212,7 +198,7 @@ def main():
             file.write("<p>" + daily_forecast.replace('\n', '<br>') + "</p>\n")
             file.write("<h3>Gardening Tips</h3>\n")
             file.write("<p>" + conditional_gardening_tips.replace('\n', '<br>') + "</p>\n")
-            file.write("<h3>Dynamic Gardening Tips</h3>\n")
+            file.write("<h3>Dynamic Gardening Tips</3>\n")
             file.write("<p>" + dynamic_gardening_tips.replace('\n', '<br>') + "</p>\n")
             file.write("<h3>Current Time</h3>\n")
             file.write("</body>\n")
@@ -224,9 +210,7 @@ def main():
     except Exception as e:
         print(f"Failed to retrieve or translate weather data: {str(e)}")
 
-
 if __name__ == "__main__":
     main()
-
 
 
