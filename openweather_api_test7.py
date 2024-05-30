@@ -193,6 +193,7 @@ def main():
             file.write("<body>\n")
             file.write("<h1>Daily Weather Forecast and Gardening Tips</h1>\n")
             file.write("<h2>Date: " + datetime.now().strftime("%B %d, %Y") + "</h2>\n")
+            file.write("<h3>Current Time</h3>\n")
             file.write(clock_code + "\n")
             file.write("<h3>Weather Forecast</h3>\n")
             file.write("<p>" + daily_forecast.replace('\n', '<br>') + "</p>\n")
@@ -200,7 +201,6 @@ def main():
             file.write("<p>" + conditional_gardening_tips.replace('\n', '<br>') + "</p>\n")
             file.write("<h3>Dynamic Gardening Tips</h3>\n")
             file.write("<p>" + dynamic_gardening_tips.replace('\n', '<br>') + "</p>\n")
-            file.write("<h3>Current Time</h3>\n")
             file.write("</body>\n")
             file.write("</html>")
 
