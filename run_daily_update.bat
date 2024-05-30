@@ -8,10 +8,10 @@ echo Checking Python interpreter
 where python
 
 echo Checking installed packages
-python -m pip list
+G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 
 echo Running Python script
-python openweather_api_test7.py
+G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7.py
 
 REM Deactivating virtual environment (optional)
 REM call deactivate.bat
@@ -26,3 +26,4 @@ echo Cleaning up Git repository
 git gc --prune=now
 
 pause
+
