@@ -13,10 +13,14 @@ G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 echo Running Python script
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7.py
 
-REM Pulling latest changes and pushing updates
-git pull origin main --allow-unrelated-histories
+REM Pulling latest changes
+git pull origin main --rebase
+
+REM Adding and committing changes
 git add -A
 git commit -m "Daily weather and gardening tips update"
+
+REM Pushing changes
 git push origin main
 
 echo Cleaning up Git repository
