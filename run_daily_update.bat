@@ -10,6 +10,9 @@ G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe --version
 echo Checking installed packages
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 
+echo Switching to gh-pages branch
+git checkout gh-pages
+
 echo Running Python script
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7.py
 
