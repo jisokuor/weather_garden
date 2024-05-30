@@ -4,22 +4,36 @@
 ## Weather Forecast
 **Current Weather:**
 
-As of May 31st, 2024, at 00:00:00, the current temperature in Porvoo, Finland is 13.8 degrees Celsius. It feels like 13.61 degrees Celsius due to humidity and wind conditions.
+As of **May 31st, 2024, at 00:00:00**, the current temperature is a pleasant **13.8°C** (56.6°F), with a feels-like temperature of **13.61°C** (56.5°F). The minimum and maximum temperatures today have been **13.52°C** (55.9°F) and **13.8°C** (56.6°F), respectively.
 
-The weather is currently clear with a visibility of 10 kilometers. The wind speed is moderate, coming from the east-northeast direction at approximately 1.81 meters per second. There are no signs of precipitation or storms.
+The current weather conditions are described as **Clear**, with a visibility of **10,000 meters** (32,808 feet).
 
-**Forecast:**
+As for the wind, it's blowing at a speed of **1.81 meters per second** (4.1 miles per hour) from a direction of **61 degrees**, with a gust of **1.97 meters per second** (4.3 miles per hour).
 
-As we move forward in time, here's what you can expect:
+The relative humidity is **91%**, and the atmospheric pressure is **1014 millibars**.
 
-* At 03:00:00 on May 31st, 2024, the temperature is expected to rise to 14.69 degrees Celsius, with a feels-like temperature of 14.51 degrees Celsius. The weather will change to scattered clouds, and wind speed will increase slightly to approximately 1.94 meters per second from the east direction.
-* At 06:00:00 on May 31st, 2024, the temperature will reach 20.87 degrees Celsius, with a feels-like temperature of 20.55 degrees Celsius. The weather is expected to become broken clouds, and wind speed will increase further to approximately 3.01 meters per second from the east-southeast direction.
+**Date and Time:** May 31st, 2024, at 00:00:00
 
-**Additional Information:**
+**Temperature:**
 
-The humidity levels are relatively high, ranging from 91% at 00:00:00 to 59% at 06:00:00. The atmospheric pressure remains steady throughout the period, ranging from 1014 millibars to 1015 millibars.
+* Current: 13.8°C
+* Feels like: 13.61°C
+* Min: 13.52°C
+* Max: 13.8°C
 
-Please note that this weather forecast is based on the provided data and is subject to change without notice.
+**Weather Conditions:** Clear
+
+**Wind:**
+
+* Speed: 1.81 meters per second (4.1 miles per hour)
+* Direction: 61 degrees
+* Gust: 1.97 meters per second (4.3 miles per hour)
+
+**Visibility:** 10,000 meters (32,808 feet)
+
+**Humidity:** 91%
+
+**Pressure:** 1014 millibars
 ## Gardening Tips
 **Static Tips for May:**
 This is the main planting month. Plant potatoes, carrots, and beets. Harden off indoor-grown seedlings before transplanting them outside. Start planting summer flowers.
@@ -27,30 +41,26 @@ This is the main planting month. Plant potatoes, carrots, and beets. Harden off 
 **Weather Considerations:**
 The weather seems suitable for outdoor planting. Follow the expert recommendations for planting and gardening activities.
 ## Dynamic Gardening Tips
-As the Gardener of the Year of Porvoo, I'm delighted to provide expert gardening tips and recommendations for today in Porvoo, Finland. Based on the weather data, here's what you can expect:
+As the Gardener of the Year of Porvoo, I'm delighted to provide expert gardening tips and recommendations for today in Porvoo, Finland. Considering the weather data, here are some valuable insights:
 
-**Weather Conditions:** Clear sky with a temperature range of 13.8°C (May 31st) to 20.87°C (June 1st). The humidity will be relatively high at 91% during the morning hours and gradually decrease throughout the day.
+**Watering:**
+With a humidity level of 91% and no rain forecasted, it's essential to water your plants thoroughly but not excessively. Check the soil moisture by inserting your finger into the soil up to the first knuckle. If the soil feels dry, give your plants a good soaking.
 
-**Watering Tips:**
+**Setting Shades:**
+The temperature is around 13.8°C (56.6°F), which is quite pleasant for outdoor gardening. However, with the sun shining brightly, it's crucial to provide shade for sensitive plants or those that prefer partial shade. You can use natural shades like trees or install artificial ones like umbrellas or canopies.
 
-* Water your plants thoroughly in the morning, as the soil may have dried out slightly due to the low humidity.
-* Avoid watering during the peak sun hours (around 10 am) when the temperature will be higher, as this can cause fungal diseases to develop.
-* Mulch around your plants to retain moisture and regulate soil temperature.
+**What to Plant Today:**
+May is an excellent time to plant a variety of crops in Porvoo! With the moderate temperature and humidity, you can sow:
 
-**Shade Recommendations:**
-
-* Provide shade for sensitive plants or seedlings that may not tolerate direct sunlight. You can use makeshift shades made from cardboard boxes or cloth canopies.
-* Consider transplanting heat-loving plants like tomatoes, peppers, or cucumbers outside once the weather warms up.
-
-**Planting Suggestions:**
-
-* May is a great time to plant cool-season crops like broccoli, cauliflower, kale, and spinach. The mild temperatures will encourage healthy growth.
-* For warmer climates, you can start planting warm-season crops like beans, corn, and squash.
-* Don't forget to harden off your seedlings before transplanting them outside.
+1. Leafy greens (lettuce, spinach, kale) for a continuous harvest.
+2. Tomatoes, peppers, and cucumbers, which thrive in warmer temperatures.
+3. Radishes, carrots, and beets, which can tolerate some shade.
 
 **Additional Tips:**
 
-* Keep an eye out for pests like aphids, whiteflies, or spider mites, which may be more active in the warmer weather. Use organic pest control methods whenever possible.
-* Take advantage of the clear sky and enjoy some gardening time! Make sure to wear protective clothing, including a hat, sunglasses, and sunscreen.
+1. **Pruning:** Use this opportunity to prune your roses, shrubs, or trees to maintain their shape and promote healthy growth.
+2. **Weeding:** Remove any weeds that have emerged during the spring season to prevent them from competing with your desired plants for water and nutrients.
+3. **Fertilizing:** Consider applying a balanced fertilizer to your plants, as they'll benefit from the extra nourishment.
+4. **Pest Control:** Keep an eye out for pests like aphids, slugs, or snails that might take advantage of the warm weather. Use organic methods to control infestations.
 
-Remember to check the weather forecast regularly for any changes or updates that might affect your gardening plans. Happy gardening, Porvoo!
+As the sun rises higher in the sky, remember to monitor your plants' responses and adjust your gardening strategy accordingly. Happy gardening in Porvoo!
