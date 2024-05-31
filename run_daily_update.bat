@@ -20,26 +20,38 @@ G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7
 REM Stashing uncommitted changes
 echo Stashing uncommitted changes
 git add -A
-git stash
+git stash -u
 
 REM Updating gh-pages branch
 echo Switching to gh-pages branch
 git checkout gh-pages
 git pull origin gh-pages --rebase
-git stash pop
+git stash pop || git stash drop
 git add -A
-git commit -m "Update from openweather_api_test7.py"
-git push origin gh-pages
+
+IF ERRORLEVEL 1 (
+    echo No changes to commit in gh-pages branch
+) ELSE (
+    git commit -m "Update from openweather_api_test7.py"
+    git push origin gh-pages
+)
 
 REM Updating main branch
 echo Switching to main branch
 git checkout main
 git pull origin main --rebase
+git stash pop || git stash drop
 git add -A
-git commit -m "Update from openweather_api_test7.py"
-git push origin main
+
+IF ERRORLEVEL 1 (
+    echo No changes to commit in main branch
+) ELSE (
+    git commit -m "Update from openweather_api_test7.py"
+    git push origin main
+)
 
 echo Cleaning up Git repository
 git gc --prune=now
 
 pause
+
