@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 import config
 import requests
 import json
@@ -140,45 +139,125 @@ def get_conditional_gardening_tips(month, weather_data):
 def text_to_speech(text, filename='forecast.mp3'):
     tts = gTTS(text=text, lang='en')
     tts.save(filename)
-    # Removed the pygame code to play the file
 
 
-def update_index_html(mp3_files):
+def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dynamic_gardening_tips):
     html_file_path = "index.html"
 
-    # Read the existing HTML content
-    with open(html_file_path, "r", encoding="utf-8") as file:
-        content = file.readlines()
-
-    # Find the position to insert the new links (e.g., after a specific comment or tag)
-    insert_pos = -1
-    for i, line in enumerate(content):
-        if "<!-- MP3 Links Start -->" in line:
-            insert_pos = i + 1
-            break
-
-    if insert_pos == -1:
-        # If the marker is not found, add a new section at the end of the body
-        insert_pos = len(content) - 1
-        while insert_pos > 0 and "</body>" not in content[insert_pos]:
-            insert_pos -= 1
-        if insert_pos <= 0:
-            insert_pos = len(content)
-
-    # Generate HTML links for the MP3 files
-    links = []
-    for mp3_file in mp3_files:
-        link = f'<li><a href="{mp3_file}" download>{mp3_file}</a></li>'
-        links.append(link)
-
-    # Insert the new links into the content
-    content.insert(insert_pos, "    <ul>\n")
-    content.insert(insert_pos + 1, "\n".join(["        " + link for link in links]))
-    content.insert(insert_pos + 2 + len(links), "    </ul>\n")
-
-    # Write the updated HTML content back to the file
     with open(html_file_path, "w", encoding="utf-8") as file:
-        file.writelines(content)
+        file.write(f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast and Gardening Tips</title>
+    <style>
+        body {{
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }}
+        header {{
+            text-align: center;
+            padding: 20px;
+            background-color: #2E8B57;
+            color: white;
+            margin-bottom: 20px;
+        }}
+        h1 {{
+            margin: 0;
+            font-size: 2.5em;
+        }}
+        h2 {{
+            color: #2E8B57;
+            font-size: 1.8em;
+        }}
+        h3 {{
+            color: #555;
+            font-size: 1.4em;
+            margin-top: 20px;
+        }}
+        p {{
+            line-height: 1.6;
+        }}
+        .container {{
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }}
+        ul {{
+            list-style-type: none;
+            padding: 0;
+        }}
+        li {{
+            margin: 10px 0;
+        }}
+        a {{
+            color: #2E8B57;
+            text-decoration: none;
+        }}
+        a:hover {{
+            text-decoration: underline;
+        }}
+        .mp3-links {{
+            margin-top: 20px;
+        }}
+        .clock {{
+            text-align: center;
+            margin: 20px 0;
+        }}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Daily Weather Forecast and Gardening Tips</h1>
+        <h2>Date: <span id="date">{datetime.now().strftime("%B %d, %Y")}</span></h2>
+    </header>
+    <div class="container">
+        <div class="clock">
+            <h3>Current Time</h3>
+            <iframe src="https://indify.co/widgets/live/clock/mC6PDMEhkRcvdRHnRtuG" style="border:none;width:100%;height:100px;"></iframe>
+        </div>
+        <section>
+            <h3>Weather Forecast</h3>
+            <p id="weather-forecast">{daily_forecast.replace('', '<br>')}</p>
+        </section>
+        <section>
+            <h3>Gardening Tips</h3>
+            <p id="gardening-tips">{conditional_gardening_tips.replace('', '<br>')}</p>
+        </section>
+        <section>
+            <h3>Dynamic Gardening Tips</h3>
+            <p id="dynamic-gardening-tips">{dynamic_gardening_tips.replace('', '<br>')}</p>
+        </section>
+        <section class="mp3-links">
+            <h3>Download MP3 Files</h3>
+            <ul id="mp3-links">""")
+
+        for mp3_file in mp3_files:
+            file.write(f'<li><a href="{mp3_file}" download>{mp3_file}</a></li>\n')
+
+        file.write("""            </ul>
+        </section>
+    </div>
+</body>
+</html>""")
+
+
+def save_markdown(daily_forecast, conditional_gardening_tips, dynamic_gardening_tips):
+    with open('output.md', 'w', encoding='utf-8', errors='replace') as file:
+        file.write("# Weather Forecast and Gardening Tips\n")
+        file.write(f"## Date: {datetime.now().strftime('%B %d, %Y')}\n")
+        file.write("\n## Weather Forecast\n")
+        file.write(daily_forecast)
+        file.write("\n## Gardening Tips\n")
+        file.write(conditional_gardening_tips)
+        file.write("\n## Dynamic Gardening Tips\n")
+        file.write(dynamic_gardening_tips)
 
 
 def commit_and_push_changes():
@@ -214,48 +293,12 @@ def main():
         text_to_speech(daily_forecast, filename='forecast.mp3')
         text_to_speech(dynamic_gardening_tips, filename='gardening_tips.mp3')
 
+        # Update index.html with content and MP3 links
+        update_index_html(['forecast.mp3', 'gardening_tips.mp3'], daily_forecast, conditional_gardening_tips,
+                          dynamic_gardening_tips)
+
         # Save the results to a Markdown file
-        with open('output.md', 'w', encoding='utf-8', errors='replace') as file:
-            file.write("# Weather Forecast and Gardening Tips\n")
-            file.write("## Date: " + datetime.now().strftime("%B %d, %Y") + "\n")
-            file.write("\n## Weather Forecast\n")
-            file.write(daily_forecast)
-            file.write("\n## Gardening Tips\n")
-            file.write(conditional_gardening_tips)
-            file.write("\n## Dynamic Gardening Tips\n")
-            file.write(dynamic_gardening_tips)
-
-        # Define the embedded clock code
-        clock_code = '<iframe src="https://indify.co/widgets/live/clock/mC6PDMEhkRcvdRHnRtuG" style="border:none;width:100%;height:100px;"></iframe>'
-
-        # Save the results to an HTML file with the embedded clock code
-        with open('index.html', 'w', encoding='utf-8', errors='replace') as file:
-            file.write("<!DOCTYPE html>\n")
-            file.write("<html lang='en'>\n")
-            file.write("<head>\n")
-            file.write("    <meta charset='UTF-8'>\n")
-            file.write("    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n")
-            file.write("    <title>Weather Forecast and Gardening Tips</title>\n")
-            file.write(
-                "    <style> body { font-family: Arial, sans-serif; margin: 20px; } h1 { color: #2E8B57; } </style>\n")
-            file.write("</head>\n")
-            file.write("<body>\n")
-            file.write("<h1>Daily Weather Forecast and Gardening Tips</h1>\n")
-            file.write("<h2>Date: " + datetime.now().strftime("%B %d, %Y") + "</h2>\n")
-            file.write("<h3>Current Time</h3>\n")
-            file.write(clock_code + "\n")
-            file.write("<h3>Weather Forecast</h3>\n")
-            file.write("<p>" + daily_forecast.replace('\n', '<br>') + "</p>\n")
-            file.write("<h3>Gardening Tips</h3>\n")
-            file.write("<p>" + conditional_gardening_tips.replace('\n', '<br>') + "</p>\n")
-            file.write("<h3>Dynamic Gardening Tips</h3>\n")
-            file.write("<p>" + dynamic_gardening_tips.replace('\n', '<br>') + "</p>\n")
-            file.write("<!-- MP3 Links Start -->\n")
-            file.write("</body>\n")
-            file.write("</html>")
-
-        # Update index.html with MP3 links
-        update_index_html(['forecast.mp3', 'gardening_tips.mp3'])
+        save_markdown(daily_forecast, conditional_gardening_tips, dynamic_gardening_tips)
 
         # Commit and push changes
         commit_and_push_changes()
@@ -266,6 +309,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
