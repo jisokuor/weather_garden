@@ -164,7 +164,7 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
             padding: 20px;
             background-color: #2E8B57;
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 20px.
         }}
         h1 {{
             margin: 0;
@@ -172,7 +172,7 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
         }}
         h2 {{
             color: #2E8B57;
-            font-size: 1.8em;
+            font-size: 1.8em.
         }}
         h3 {{
             color: #555;
@@ -187,28 +187,28 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
             margin: auto;
             background: white;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1).
         }}
         ul {{
             list-style-type: none;
             padding: 0;
         }}
         li {{
-            margin: 10px 0;
+            margin: 10px 0.
         }}
         a {{
             color: #2E8B57;
-            text-decoration: none;
+            text-decoration: none.
         }}
         a:hover {{
-            text-decoration: underline;
+            text-decoration: underline.
         }}
         .mp3-links {{
-            margin-top: 20px;
+            margin-top: 20px.
         }}
         .clock {{
-            text-align: center;
-            margin: 20px 0;
+            text-align: center.
+            margin: 20px 0.
         }}
     </style>
 </head>
@@ -224,15 +224,15 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
         </div>
         <section>
             <h3>Weather Forecast</h3>
-            <p id="weather-forecast">{daily_forecast.replace('', '<br>')}</p>
+            <p id="weather-forecast">{daily_forecast.replace('<br>', '<br>')}</p>
         </section>
         <section>
             <h3>Gardening Tips</h3>
-            <p id="gardening-tips">{conditional_gardening_tips.replace('', '<br>')}</p>
+            <p id="gardening-tips">{conditional_gardening_tips.replace('<br>', '<br>')}</p>
         </section>
         <section>
             <h3>Dynamic Gardening Tips</h3>
-            <p id="dynamic-gardening-tips">{dynamic_gardening_tips.replace('', '<br>')}</p>
+            <p id="dynamic-gardening-tips">{dynamic_gardening_tips.replace('<br>', '<br>')}</p>
         </section>
         <section class="mp3-links">
             <h3>Download MP3 Files</h3>
