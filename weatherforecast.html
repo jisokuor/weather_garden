@@ -59,43 +59,53 @@
 <body>
 <header>
 <h1>Weather Forecast and Gardening Tips</h1>
-<h2>Date: <span id="date"></span></h2>
+<h2>Date: <span id="date">May 31, 2024</span></h2>
 </header>
 <div class="container">
 <div class="clock">
 <h3>Current Time</h3>
-<iframe src="https://indify.co/widgets/live/clock/mC6PDMEhkRcvdRHnRtuG" style="border:none;width:100%;height:100px;"></iframe>
+<p id="timestamp">08:20:24</p>
 </div>
-<section id="weather-forecast-section">
+<section>
 <h3>Weather Forecast</h3>
 <p id="weather-forecast">
-        Temperature: 16°C<br/>
-        Feels like: 15°C<br/>
-        Weather: scattered clouds<br/>
-        Wind speed: 1.7 m/s<br/>
-        Humidity: 78%<br/>
-        Pressure: 1015 hPa<br/>
-</p>
+        Temperature: 17.83 °C
+        Feels like: 18.1 °C
+        Weather: scattered clouds
+        Wind speed: 3.02 m/s
+        Humidity: 93 %
+        Pressure: 1015 hPa
+        </p>
 <canvas id="hourly-forecast"></canvas>
 </section>
-<section id="gardening-tips-section">
+<section>
 <h3>Gardening Tips</h3>
-<p id="gardening-tips">Another lovely day in Porvoo, Finland! As the Gardener of the Year, I'm delighted to share my expert advice with you.
+<p id="gardening-tips">As the Gardener of the Year of Porvoo, I'm delighted to provide you with expert gardening tips and recommendations for today in May!
 
-**Watering:** With a relatively mild temperature and moderate humidity, today is an excellent day for watering your plants. Aim to provide about 1-2 inches of water per week, divided among multiple applications if needed. Make sure the soil has a chance to dry out slightly between waterings to prevent root rot. For newly planted seedlings or young plants, it's better to err on the side of caution and give them a gentle soaking instead of overwatering.
+**Watering:**
+Given the high humidity (93%) and moderate temperature (17.83°C), it's essential to maintain a consistent moisture level in your plants. Water your plants thoroughly in the morning, taking care not to overwater. You can also consider mulching or adding organic matter to improve soil structure.
 
-**Shade:** With scattered clouds in the sky, you won't need to worry about providing shade for your plants just yet. In May, the sun is still relatively weak, so your plants will appreciate the natural sunlight. If you have plants that prefer partial shade, consider using a light-colored mulch or a sheer curtain to filter the sun's rays.
+**Shading:**
+With scattered clouds, direct sunlight might be intense at times. Consider providing shade for sensitive plants or those that prefer partial shade. You can use natural shading methods like planting taller species nearby or installing a temporary shade cloth.
 
-**Planting:** This time of year is perfect for planting a variety of cool-season crops like lettuce, spinach, peas, and potatoes. The gentle temperatures and sufficient moisture will help them establish a strong root system. For flowering plants, you can start sowing seeds for marigolds, zinnias, and cosmos. These will thrive in the warm sunshine and can be enjoyed throughout the summer.
+**Planting:**
+May is an excellent time to plant in Porvoo! Take advantage of the mild weather and get started with:
 
-**Tips:**
+1. **Flowers:** Plant annuals like marigolds, petunias, or snapdragons that thrive in moderate temperatures.
+2. **Vegetables:** Sow seeds for tomatoes, peppers, cucumbers, and herbs like basil or mint.
+3. **Fruits:** Start planting strawberries, blueberries, or raspberries.
 
-1. **Fertilize wisely:** Since the soil is still warming up, avoid applying heavy fertilizers that can promote excessive growth. Instead, opt for a balanced fertilizer or a compost tea to provide your plants with essential nutrients.
-2. **Prune with care:** As plants start to grow, prune them carefully to maintain shape and encourage healthy growth. Remove any weak or spindly stems to direct the plant's energy towards more productive areas.
-3. **Pest watch:** Keep an eye out for aphids, slugs, and snails, which can become active in May. Use natural pest control methods like neem oil, soap solution, or hand-picking to minimize harm to your plants.
-4. **Compost corner:** Take this opportunity to add more compost to your piles. As the weather warms up, microorganisms will thrive, breaking down organic matter and creating a nutrient-rich soil amendment.
+**Additional Tips:**
 
-Enjoy your gardening time in Porvoo today!</p>
+1. **Soil preparation:** With high humidity, the soil might be prone to waterlogging. Ensure good drainage by adding organic matter or perlite.
+2. **Pest control:** Keep an eye out for aphids, slugs, and snails that thrive in humid environments. Use organic pest control methods whenever possible.
+3. **Fertilization:** Apply a balanced fertilizer (e.g., 10-10-10 NPK) to promote healthy plant growth.
+4. **Pruning:** Prune plants to maintain shape, encourage new growth, or remove dead foliage.
+
+**Wind protection:**
+The moderate wind speed (3.02 m/s) is relatively calm, but it's still essential to protect your more delicate plants from potential damage. Use stakes, trellises, or windbreaks as necessary.
+
+By following these expert gardening tips and recommendations, you'll be well on your way to creating a thriving garden in Porvoo, Finland!</p>
 </section>
 <section class="mp3-links">
 <h3>Download MP3 Files</h3>
@@ -137,14 +147,17 @@ Enjoy your gardening time in Porvoo today!</p>
             `;
             $('#weather-forecast').html(weatherForecast.replace(/\n/g, '<br>'));
 
-            // Update gardening tips based on the weather
-            const gardeningTips = `
-              Based on the current weather conditions, here are your gardening tips:
-              - Water your plants early in the morning to avoid evaporation.
-              - Protect young plants from the sun during midday if it's hot.
-              - Check for pests as they are more active in warm weather.
-            `;
-            $('#gardening-tips').html(gardeningTips.replace(/\n/g, '<br>'));
+            // Fetch the dynamic gardening tips
+            $.ajax({
+              url: 'dynamic_gardening_tips.txt',
+              method: 'GET',
+              success: function(gardeningTips) {
+                $('#gardening-tips').html(gardeningTips.replace(/\n/g, '<br>'));
+              },
+              error: function(error) {
+                console.error("Error fetching gardening tips", error);
+              }
+            });
 
             // Render the chart
             const ctx = document.getElementById('hourly-forecast').getContext('2d');
