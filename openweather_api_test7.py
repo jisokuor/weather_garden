@@ -1,22 +1,20 @@
-# -*- coding: utf-8 -*-
-
 import config
 import requests
 import json
 from gtts import gTTS
 import pygame
 from datetime import datetime
+import subprocess
+import os
 
-# Display the system prompt for the user
+# System prompts for weather and gardening
 system_prompt_weather = """
 As a certified weather forecast expert using the metric system, I am equipped to provide comprehensive assistance in reading and interpreting weather data using official meteorological standards.
 Avoid using '*' in your output"""
 
 system_prompt_gardening = """
 As the Gardener of the Year of Porvoo, I offer expert gardening tips and recommendations based on the current weather forecast.
-Avoid using '*'in your output"""
-
-
+Avoid using '*' in your output"""
 
 def query_ollama(prompt, system_message, model_url):
     data = {
@@ -40,7 +38,6 @@ def query_ollama(prompt, system_message, model_url):
     else:
         raise Exception(f"API call failed: {response.status_code} - {response.text}")
 
-
 def test_openweathermap_api(api_key):
     lat = "60.4720597"
     lon = "25.7878047"
@@ -49,21 +46,19 @@ def test_openweathermap_api(api_key):
 
     try:
         response = requests.get(url)
-        response.raise_for_status()  # Raises an exception for non-2xx status codes
+        response.raise_for_status()
         weather_data = response.json()
-        print("API key is working!",response)
+        print("API key is working!", response)
         return weather_data
     except requests.RequestException as e:
         print(f"Error while retrieving data: {e}")
-        raise  # Re-raise the exception for the caller to handle
-
+        raise
 
 def get_next_3_hours_data(weather_data):
     return {
         "list": weather_data["list"][:3],
         "city": weather_data["city"]
     }
-
 
 def translate_weather_data(weather_data):
     weather_data_json = json.dumps(weather_data, indent=2)
@@ -82,7 +77,6 @@ def translate_weather_data(weather_data):
         f"The data is found inside this: {weather_data_json}. Translate it to the actual weather forecast. "
         f"The data is derived today from openweather.com and is up to date.")
     return query_ollama(prompt, system_prompt_weather, config.MODEL_URL)
-
 
 def gardening_tips(weather_data):
     weather_data_json = json.dumps(weather_data, indent=2)
@@ -106,9 +100,7 @@ def gardening_tips(weather_data):
 
     return query_ollama(prompt, system_prompt_gardening, config.MODEL_URL)
 
-
 def get_conditional_gardening_tips(month, weather_data):
-    # Static expert advice for each month
     monthly_gardening_tips = {
         "January": "January is the coldest month in Finland, so focus on planning your garden for the upcoming year. Order seeds, clean and repair tools, and consider starting some plants indoors.",
         "February": "Continue planning and preparing. Do not plant outside, even if the weather seems warm. Start sowing seeds indoors for early vegetables like onions, leeks, and cabbage. Prune fruit trees and bushes to promote healthy growth.",
@@ -124,28 +116,21 @@ def get_conditional_gardening_tips(month, weather_data):
         "December": "Focus on indoor gardening activities like caring for houseplants or growing herbs on the windowsill. Review your garden plan and start preparing for the next growing season."
     }
 
-    # Get static tips for the month
     static_tips = monthly_gardening_tips.get(month, "No specific tips available for this month.")
-
-    # Conditional logic for specific months
     if month in ["October", "November", "December", "January", "February", "March", "April"]:
         weather_advice = "Do not plant outside, even if the weather seems warm. It's still too early for outdoor planting in Finland."
     else:
         weather_advice = "The weather seems suitable for outdoor planting. Follow the expert recommendations for planting and gardening activities."
 
-    # Combine static tips and weather advice
     combined_tips = f"**Static Tips for {month}:**\n{static_tips}\n\n**Weather Considerations:**\n{weather_advice}"
     return combined_tips
-
 
 def text_to_speech(text, filename='forecast.mp3'):
     tts = gTTS(text=text, lang='en')
     tts.save(filename)
 
-
 def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dynamic_gardening_tips):
     html_file_path = "index.html"
-
     with open(html_file_path, "w", encoding="utf-8") as file:
         file.write(f"""<!DOCTYPE html>
 <html lang="en">
@@ -166,7 +151,7 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
             padding: 20px;
             background-color: #2E8B57;
             color: white;
-            margin-bottom: 20px.
+            margin-bottom: 20px;
         }}
         h1 {{
             margin: 0;
@@ -174,7 +159,7 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
         }}
         h2 {{
             color: #2E8B57;
-            font-size: 1.8em.
+            font-size: 1.8em;
         }}
         h3 {{
             color: #555;
@@ -189,28 +174,28 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
             margin: auto;
             background: white;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1).
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }}
         ul {{
             list-style-type: none;
             padding: 0;
         }}
         li {{
-            margin: 10px 0.
+            margin: 10px 0;
         }}
         a {{
             color: #2E8B57;
-            text-decoration: none.
+            text-decoration: none;
         }}
         a:hover {{
-            text-decoration: underline.
+            text-decoration: underline;
         }}
         .mp3-links {{
-            margin-top: 20px.
+            margin-top: 20px;
         }}
         .clock {{
-            text-align: center.
-            margin: 20px 0.
+            text-align: center;
+            margin: 20px 0;
         }}
     </style>
 </head>
@@ -249,7 +234,6 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
 </body>
 </html>""")
 
-
 def save_markdown(daily_forecast, conditional_gardening_tips, dynamic_gardening_tips):
     with open('output.md', 'w', encoding='utf-8', errors='replace') as file:
         file.write("# Weather Forecast and Gardening Tips\n")
@@ -261,15 +245,12 @@ def save_markdown(daily_forecast, conditional_gardening_tips, dynamic_gardening_
         file.write("\n## Dynamic Gardening Tips\n")
         file.write(dynamic_gardening_tips)
 
-
 def commit_and_push_changes():
-    import subprocess
     subprocess.run(["git", "pull", "origin", "main", "--allow-unrelated-histories"])
     subprocess.run(["git", "add", "-f", "index.html", "forecast.mp3", "gardening_tips.mp3", "output.md",
                     "openweather_api_test7.py", "requirements.txt", "run_daily_update.bat"])
     subprocess.run(["git", "commit", "-m", "Daily weather and gardening tips update"])
     subprocess.run(["git", "push", "origin", "main"])
-
 
 def main():
     api_key = config.OPEN_WEATHER_MAP_API_KEY
@@ -291,23 +272,17 @@ def main():
         print("\nDynamic Gardening Tips:")
         print(dynamic_gardening_tips)
 
-        # Generate audio files for the forecast and gardening tips
         text_to_speech(daily_forecast, filename='forecast.mp3')
         text_to_speech(dynamic_gardening_tips, filename='gardening_tips.mp3')
 
-        # Update index.html with content and MP3 links
         update_index_html(['forecast.mp3', 'gardening_tips.mp3'], daily_forecast, conditional_gardening_tips,
                           dynamic_gardening_tips)
-
-        # Save the results to a Markdown file
         save_markdown(daily_forecast, conditional_gardening_tips, dynamic_gardening_tips)
-
-        # Commit and push changes
         commit_and_push_changes()
 
     except Exception as e:
         print(f"Failed to retrieve or translate weather data: {str(e)}")
 
-
 if __name__ == "__main__":
     main()
+
