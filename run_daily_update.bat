@@ -12,8 +12,12 @@ G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 
 echo Installing required packages
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install --upgrade pip
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install -r requirements.txt
+=======
+G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install --upgrade pip requests
+>>>>>>> Stashed changes
 =======
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install --upgrade pip requests
 >>>>>>> Stashed changes
