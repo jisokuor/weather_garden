@@ -8,12 +8,11 @@ from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 from flask import Flask, jsonify, render_template
 from dotenv import load_dotenv
-
-load_dotenv()
+import config  # Import the config module
 
 app = Flask(__name__)
 
-API_KEY = os.getenv("OPENWEATHER_API_KEY")
+API_KEY = config.OPENWEATHER_API_KEY  # Use the API key from the config module
 LAT = '60.4720597'
 LON = '25.7878047'
 
@@ -27,6 +26,7 @@ def fetch_weather_data():
 @app.route('/')
 def index():
     return render_template('weatherforecast.html')
+
 # System prompts for weather and gardening
 system_prompt_weather = """
 As a certified weather forecast expert using the metric system, I am equipped to provide comprehensive assistance in reading and interpreting weather data using official meteorological standards.
@@ -222,4 +222,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
