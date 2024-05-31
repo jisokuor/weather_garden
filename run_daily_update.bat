@@ -11,8 +11,12 @@ echo Checking installed packages
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 
 echo Installing required packages
+<<<<<<< Updated upstream
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install --upgrade pip
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install -r requirements.txt
+=======
+G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install --upgrade pip requests
+>>>>>>> Stashed changes
 
 echo Running Python script
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7.py
