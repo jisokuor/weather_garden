@@ -25,8 +25,16 @@ git stash -u
 REM Updating gh-pages branch
 echo Switching to gh-pages branch
 git checkout gh-pages
+
+REM Stashing changes to prevent conflicts
+git stash -u
+
 git pull origin gh-pages --rebase
+
+REM Popping stash and resolving conflicts automatically
 git stash pop || git stash drop
+
+REM Adding and committing changes if there are any
 git add -A
 
 IF ERRORLEVEL 1 (
@@ -39,8 +47,16 @@ IF ERRORLEVEL 1 (
 REM Updating main branch
 echo Switching to main branch
 git checkout main
+
+REM Stashing changes to prevent conflicts
+git stash -u
+
 git pull origin main --rebase
+
+REM Popping stash and resolving conflicts automatically
 git stash pop || git stash drop
+
+REM Adding and committing changes if there are any
 git add -A
 
 IF ERRORLEVEL 1 (
