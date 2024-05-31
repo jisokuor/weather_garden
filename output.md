@@ -3,11 +3,33 @@
 
 ## Weather Forecast
 **Current Weather:**
-As of **2024-05-31 03:00:00**, the current temperature is **12.72°C**, feeling like **12.37°C**. It's been as warm as **15.52°C** earlier, and as cool as **12.72°C**. The atmospheric pressure is **1014** millibars, with a humidity level of **89%**.
 
-The sky is currently filled with **few clouds**, with visibility at an excellent **10 kilometers**. There's no precipitation expected, and the wind speed is moderate at **1.48 meters per second**, blowing from the east-northeast direction at **63 degrees**. The gusts are gentle at **3.3 meters per second**.
+As of May 31st, 2024, at 03:00:00 AM,
 
-This information is accurate as of 03:00:00 on May 31st, 2024. Please note that this data is subject to change, and it's always a good idea to check for updates before making any decisions based on the weather forecast.
+* **Temperature:** The current temperature is 12.37 degrees Celsius, feeling like 11.99 degrees Celsius. The minimum temperature recorded today was also 12.37 degrees Celsius, while the maximum temperature reached 15.52 degrees Celsius.
+* **Weather Conditions:** The sky is currently covered with few clouds (scattered clouds).
+* **Wind:** The wind speed is moderate at 1.48 meters per second, blowing from the east-northeast direction (63 degrees). There's a slight gust of 3.3 meters per second.
+* **Visibility:** The visibility is excellent at 10 kilometers (6.2 miles).
+* **Humidity:** The relative humidity is relatively high at 89%.
+* **Pressure:** The atmospheric pressure is 1014 hectopascals.
+
+**Forecast:**
+
+For the next few hours, we can expect:
+
+At 06:00:00 AM,
+
+* **Temperature:** The current temperature will rise to 17.83 degrees Celsius, feeling like 17.47 degrees Celsius.
+* **Weather Conditions:** Scattered clouds will continue to dominate the sky.
+* **Wind:** The wind speed will increase slightly to 3.02 meters per second, blowing from the east direction (97 degrees). There's a slight gust of 4.51 meters per second.
+
+At 09:00:00 AM,
+
+* **Temperature:** The current temperature will reach 24.45 degrees Celsius, feeling like 24.15 degrees Celsius.
+* **Weather Conditions:** Few clouds will continue to cover the sky.
+* **Wind:** The wind speed will remain moderate at 3.33 meters per second, blowing from the southeast direction (126 degrees). There's a slight gust of 3.85 meters per second.
+
+Please note that these forecasts are subject to change and may not reflect the actual weather conditions at the time of your request.
 ## Gardening Tips
 **Static Tips for May:**
 This is the main planting month. Plant potatoes, carrots, and beets. Harden off indoor-grown seedlings before transplanting them outside. Start planting summer flowers.
@@ -15,26 +37,38 @@ This is the main planting month. Plant potatoes, carrots, and beets. Harden off 
 **Weather Considerations:**
 The weather seems suitable for outdoor planting. Follow the expert recommendations for planting and gardening activities.
 ## Dynamic Gardening Tips
-What a lovely day in Porvoo, Finland! With temperatures ranging from 12.72°C to 24.45°C and plenty of sunshine, it's an ideal day for gardening.
+Dear gardener! As the Gardener of the Year of Porvoo, I'm delighted to provide you with expert gardening tips and recommendations for today in Porvoo, Finland.
+
+**Temperature:** With a temperature of 12.37°C (May is an excellent time to plant, as the soil has warmed up nicely), it's perfect for most plants to thrive.
+
+**Weather conditions:** Few clouds mean plenty of sunlight, which will help your plants grow and photosynthesize efficiently.
+
+**Wind speed:** A gentle breeze of 1.48 m/s won't cause any significant damage or discomfort to your plants.
+
+**Humidity:** With a relative humidity of 89%, it's essential to ensure good air circulation around your plants to prevent moisture-related issues like fungal diseases.
+
+Now, let's get to the actionable advice!
 
 **Watering:**
-Since the humidity is relatively high at 89%, it's essential to avoid overwatering your plants. Stick to the usual watering schedule, but make sure the soil isn't waterlogged. You can always check the soil moisture by inserting a finger into the soil up to the knuckle. If it feels dry, it's time for a drink!
+
+* Water your plants thoroughly in the morning, as the soil has had time to absorb most of the water overnight.
+* Check the soil moisture by inserting a finger into the top 2-3 inches. If it feels dry, it's time for another round of watering.
 
 **Shading:**
-As the temperature rises, consider providing some shade for your plants that are sensitive to direct sunlight. You can use shading materials like row covers or even create a DIY trellis with a lightweight material.
 
-**What to Plant Today:**
-May is an excellent month to plant a variety of vegetables and flowers in Porvoo! Consider sowing the following:
+* Since there are few clouds, your plants won't need any shading. However, if you have plants that prefer partial shade (like ferns or impatiens), consider providing some gentle filtering using a shade cloth or a trellis with a canopy.
 
-1. **Vegetables:** Radishes, spinach, lettuce, peas, carrots, beets, and herbs like parsley, dill, or chives.
-2. **Flowers:** Marigolds, zinnias, sunflowers, cosmos, and sweet alyssum.
+**What to plant today:**
 
-Remember to check the specific planting instructions for each variety of plant you're growing.
+* With the favorable weather conditions, May is an excellent time to plant:
+	+ Cool-season crops like broccoli, cauliflower, and kale.
+	+ Root vegetables like carrots, beets, and potatoes.
+	+ Perennials like hostas, daylilies, and black-eyed susans.
 
-**Additional Tips:**
+**Other useful hints:**
 
-1. **Pruning:** Take this opportunity to prune any overgrown plants or shrubs to promote healthy growth and encourage new blooms.
-2. **Soil Preparation:** May is an excellent time to prepare your soil for the upcoming season. Add compost, well-rotted manure, or other organic matter to improve soil structure and fertility.
-3. **Pest Control:** Keep an eye out for pests like aphids, slugs, and snails, which can be more active in warm weather.
+* Make sure to mulch around your plants to retain moisture and suppress weeds. Organic materials like straw or bark chips work well.
+* Prune any dead or damaged foliage from your plants to promote healthy growth and prevent disease spread.
+* Keep an eye out for pests like aphids, slugs, and snails, which are more active in this type of weather.
 
-Enjoy your gardening experience in Porvoo today!
+By following these expert gardening tips, you'll be on track to enjoy a bountiful harvest and a beautiful garden throughout the year!

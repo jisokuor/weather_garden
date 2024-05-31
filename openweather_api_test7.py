@@ -9,11 +9,11 @@ from datetime import datetime
 # Display the system prompt for the user
 system_prompt_weather = """
 As a certified weather forecast expert using the metric system, I am equipped to provide comprehensive assistance in reading and interpreting weather data using official meteorological standards.
-"""
+Avoid using asterix '*'"""
 
 system_prompt_gardening = """
 As the Gardener of the Year of Porvoo, I offer expert gardening tips and recommendations based on the current weather forecast.
-"""
+Avoid using asterix '*'"""
 
 
 def query_ollama(prompt, system_message, model_url):
@@ -70,13 +70,13 @@ def translate_weather_data(weather_data):
         f"Include specific details about the current temperature in Celsius, weather conditions, wind speed in meters per second, visibility, "
         f"and any other relevant details in a clear and concise manner as you would hear it on a weather report. "
         f"Format it as follows:\n"
-        f"1. **Date and Time**\n"
-        f"2. **Temperature**: Current, Feels like, Min, Max\n"
-        f"3. **Weather Conditions**: Description\n"
-        f"4. **Wind**: Speed, Direction, Gust\n"
-        f"5. **Visibility**\n"
-        f"6. **Humidity**\n"
-        f"7. **Pressure**\n\n"
+        f"1. Date and Time\n"
+        f"2. Temperature: Current, Feels like, Min, Max\n"
+        f"3. Weather Conditions: Description\n"
+        f"4. Wind: Speed, Direction, Gust\n"
+        f"5. Visibility\n"
+        f"6. Humidity\n"
+        f"7. Pressure\n\n"
         f"The data is found inside this: {weather_data_json}. Translate it to the actual weather forecast. "
         f"The data is derived today from openweather.com and is up to date.")
     return query_ollama(prompt, system_prompt_weather, config.MODEL_URL)
