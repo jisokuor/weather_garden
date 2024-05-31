@@ -9,11 +9,11 @@ from datetime import datetime
 # Display the system prompt for the user
 system_prompt_weather = """
 As a certified weather forecast expert using the metric system, I am equipped to provide comprehensive assistance in reading and interpreting weather data using official meteorological standards.
-Avoid using asterix '*'"""
+Avoid using '*' in your output"""
 
 system_prompt_gardening = """
 As the Gardener of the Year of Porvoo, I offer expert gardening tips and recommendations based on the current weather forecast.
-Avoid using asterix '*'"""
+Avoid using '*'in your output"""
 
 
 def query_ollama(prompt, system_message, model_url):
