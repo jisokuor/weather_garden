@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <title>Weather and Forecast</title>
@@ -64,49 +63,45 @@
 <div class="container">
 <div class="clock">
 <h3>Current Time</h3>
-<p id="timestamp">08:49:15</p>
+<p id="timestamp">08:20:24</p>
 </div>
 <section>
 <h3>Weather Forecast</h3>
 <p id="weather-forecast">
-        Temperature: 18.94 °C
-        Feels like: 19.16 °C
+        Temperature: 17.83 °C
+        Feels like: 18.1 °C
         Weather: scattered clouds
         Wind speed: 3.02 m/s
-        Humidity: 87 %
+        Humidity: 93 %
         Pressure: 1015 hPa
         </p>
 <canvas id="hourly-forecast"></canvas>
 </section>
 <section>
 <h3>Gardening Tips</h3>
-<p id="gardening-tips">A lovely spring day in Porvoo! As the Gardener of the Year, I'm delighted to share my expert advice with you.
+<p id="gardening-tips">As the Gardener of the Year of Porvoo, I'm delighted to provide you with expert gardening tips and recommendations for today in May!
 
 **Watering:**
-With a comfortable temperature and humidity level, today is an excellent day to water your plants. However, considering the wind speed is relatively low (3.02 m/s), you might want to avoid overwatering to prevent fungal diseases or root rot. Water your plants deeply but thoroughly, making sure the soil is moist but not waterlogged.
+Given the high humidity (93%) and moderate temperature (17.83°C), it's essential to maintain a consistent moisture level in your plants. Water your plants thoroughly in the morning, taking care not to overwater. You can also consider mulching or adding organic matter to improve soil structure.
 
-**Shades:**
-As the sun is shining through scattered clouds, providing some shade for sensitive plants will be beneficial. If you have plants that require partial shading, consider using a trellis, arbor, or even a simple DIY shade structure to protect them from direct sunlight.
+**Shading:**
+With scattered clouds, direct sunlight might be intense at times. Consider providing shade for sensitive plants or those that prefer partial shade. You can use natural shading methods like planting taller species nearby or installing a temporary shade cloth.
 
 **Planting:**
-May is an excellent month to plant in Porvoo! With the soil still slightly cool and the air mild, it's perfect for sowing seeds of:
+May is an excellent time to plant in Porvoo! Take advantage of the mild weather and get started with:
 
-* Tomatoes
-* Peppers
-* Cucumbers
-* Zucchini
-* Carrots
-* Radishes
-
-These vegetables will thrive in the gentle spring weather. Don't forget to check the specific planting instructions for each variety.
+1. **Flowers:** Plant annuals like marigolds, petunias, or snapdragons that thrive in moderate temperatures.
+2. **Vegetables:** Sow seeds for tomatoes, peppers, cucumbers, and herbs like basil or mint.
+3. **Fruits:** Start planting strawberries, blueberries, or raspberries.
 
 **Additional Tips:**
 
-* As the temperature is still relatively cool, you might want to wait a few days before planting warm-season crops like beans or corn.
-* With 87% humidity, make sure your plants have good air circulation to prevent fungal diseases. Consider pruning any overgrown foliage or installing fans in your garden.
-* Take advantage of the pleasant weather and perform some much-needed gardening tasks, such as weeding, mulching, or composting.
+1. **Soil preparation:** With high humidity, the soil might be prone to waterlogging. Ensure good drainage by adding organic matter or perlite.
+2. **Pest control:** Keep an eye out for aphids, slugs, and snails, which can become active during this time. Use natural pest control methods like neem oil or introduce beneficial insects to your garden.
+3. **Garden maintenance:** May is a great time to clean up any debris or dead plant material from the winter. Remove weeds by hand or use a shallow tiller to prevent damaging roots.
 
-Remember to keep an eye on the temperature and adjust your watering schedule accordingly. Enjoy your beautiful spring day in Porvoo!</p>
+By following these expert gardening tips and recommendations, you'll be well on your way to creating a thriving and beautiful garden in Porvoo, Finland. Happy gardening!
+</p>
 </section>
 <section class="mp3-links">
 <h3>Download MP3 Files</h3>
@@ -123,13 +118,9 @@ Remember to keep an eye on the temperature and adjust your watering schedule acc
     $(document).ready(function() {
       $('#date').text(moment().format('MMMM Do YYYY'));
 
-      const apiKey = '918403ad1a1997bf8650f34d05c9c9a4';
-      const lat = '60.4720597';
-      const lon = '25.7878047';
-
       function updateWeather() {
         $.ajax({
-          url: `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`,
+          url: 'fetch_weather_data',
           method: 'GET',
           success: function(data) {
             const forecast = data.list.slice(0, 8); // Example: getting the next 8 three-hour intervals
