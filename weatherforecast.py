@@ -1,18 +1,16 @@
 import os
-import config
 import requests
 import json
-from gtts import gTTS
-from datetime import datetime
-from bs4 import BeautifulSoup
-import matplotlib.pyplot as plt
 from flask import Flask, jsonify, render_template
-from dotenv import load_dotenv
-import config  # Import the config module
+from bs4 import BeautifulSoup
+from gtts import gTTS
+import matplotlib.pyplot as plt
+from datetime import datetime
+import config
 
 app = Flask(__name__)
 
-API_KEY = config.OPEN_WEATHER_API_KEY  # Use the API key from the config module
+API_KEY = config.OPEN_WEATHER_MAP_API_KEY
 LAT = '60.4720597'
 LON = '25.7878047'
 
@@ -21,7 +19,16 @@ def fetch_weather_data():
     url = f"http://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&appid={API_KEY}&units=metric"
     response = requests.get(url)
     data = response.json()
+    update_weather_html(data)
     return jsonify(data)
+
+def update_weather_html(data):
+    weather_info = f"""
+    <h1>Weather Forecast</h1>
+    <p>Temperature: {data['list'][0]['main']['temp']}°C</p>
+    """
+    with open('templates/weatherforecast.html', 'w') as file:
+        file.write(weather_info)
 
 @app.route('/')
 def index():
@@ -35,7 +42,6 @@ Avoid using '*' in your output"""
 system_prompt_gardening = """
 As the Gardener of the Year of Porvoo, I offer expert gardening tips and recommendations based on the current weather forecast.
 Avoid using '*' in your output"""
-
 
 def query_ollama(prompt, system_message, model_url):
     data = {
@@ -59,7 +65,6 @@ def query_ollama(prompt, system_message, model_url):
     else:
         raise Exception(f"API call failed: {response.status_code} - {response.text}")
 
-
 def extract_weather_data_from_html(html_file_path):
     with open(html_file_path, 'r', encoding='utf-8') as file:
         soup = BeautifulSoup(file, 'html.parser')
@@ -79,7 +84,6 @@ def extract_weather_data_from_html(html_file_path):
 
     print("Parsed weather data:", weather_data)
     return weather_data
-
 
 def gardening_tips(weather_data):
     temperature = weather_data['temperature']
@@ -101,17 +105,14 @@ def gardening_tips(weather_data):
 
     return query_ollama(prompt, system_prompt_gardening, config.MODEL_URL)
 
-
 def text_to_speech(text, filename='forecast.mp3'):
     tts = gTTS(text=text, lang='en')
     tts.save(filename)
-
 
 def save_gardening_tips_to_file(tips, filename='dynamic_gardening_tips.txt'):
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(tips)
     print(f"Gardening tips saved to {filename}")
-
 
 def update_weatherforecast_html(weather_data, gardening_tips, labels, temps, feels_like_temps):
     with open('weatherforecast.html', 'r', encoding='utf-8') as file:
@@ -145,7 +146,6 @@ def update_weatherforecast_html(weather_data, gardening_tips, labels, temps, fee
 
     plot_weather_chart(labels, temps, feels_like_temps)
 
-
 def plot_weather_chart(labels, temps, feels_like_temps):
     # Ensure the 'static' directory exists
     os.makedirs('static', exist_ok=True)
@@ -160,7 +160,6 @@ def plot_weather_chart(labels, temps, feels_like_temps):
     plt.grid(True)
     plt.savefig('static/weather_chart.png')
     plt.close()
-
 
 def get_weather_forecast(api_key):
     lat = "60.4720597"
@@ -177,7 +176,6 @@ def get_weather_forecast(api_key):
     except requests.RequestException as e:
         print(f"Error: {str(e)}")
         return None
-
 
 def parse_weather_data(weather_data):
     forecast = weather_data['list'][:8]  # Next 8 three-hour intervals
@@ -199,7 +197,6 @@ def parse_weather_data(weather_data):
 
     return parsed_data, labels, temps, feels_like_temps
 
-
 def main():
     api_key = config.OPEN_WEATHER_MAP_API_KEY
     model_url = config.MODEL_URL
@@ -220,6 +217,6 @@ def main():
     except Exception as e:
         print(f"Failed to retrieve or translate weather data: {str(e)}")
 
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=False)  # Disable the auto-reloader
 
-if __name__ == "__main__":
-    app.run(debug=True)
