@@ -10,15 +10,23 @@ G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe --version
 echo Checking installed packages
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 
-python.exe -m pip install --upgrade pip
+echo Installing required packages
+G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install --upgrade pip
+G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install -r requirements.txt
 
 echo Running Python script
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7.py
+
+REM Stashing uncommitted changes
+echo Stashing uncommitted changes
+git add -A
+git stash
 
 REM Updating gh-pages branch
 echo Switching to gh-pages branch
 git checkout gh-pages
 git pull origin gh-pages --rebase
+git stash pop
 git add -A
 git commit -m "Update from openweather_api_test7.py"
 git push origin gh-pages
