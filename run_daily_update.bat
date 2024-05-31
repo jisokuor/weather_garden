@@ -26,18 +26,23 @@ REM Updating gh-pages branch
 echo Switching to gh-pages branch
 git checkout gh-pages
 
-REM Stashing changes to prevent conflicts
-git stash -u
-
+REM Pull and handle conflicts
 git pull origin gh-pages --rebase
 
+IF %ERRORLEVEL% NEQ 0 (
+    echo Handling merge conflicts in gh-pages branch
+    git merge --abort
+    git reset --hard
+    git pull origin gh-pages --rebase
+)
+
 REM Popping stash and resolving conflicts automatically
-git stash pop || git stash drop
+git stash pop
 
 REM Adding and committing changes if there are any
 git add -A
 
-IF ERRORLEVEL 1 (
+IF %ERRORLEVEL% NEQ 0 (
     echo No changes to commit in gh-pages branch
 ) ELSE (
     git commit -m "Update from openweather_api_test7.py"
@@ -48,18 +53,23 @@ REM Updating main branch
 echo Switching to main branch
 git checkout main
 
-REM Stashing changes to prevent conflicts
-git stash -u
-
+REM Pull and handle conflicts
 git pull origin main --rebase
 
+IF %ERRORLEVEL% NEQ 0 (
+    echo Handling merge conflicts in main branch
+    git merge --abort
+    git reset --hard
+    git pull origin main --rebase
+)
+
 REM Popping stash and resolving conflicts automatically
-git stash pop || git stash drop
+git stash pop
 
 REM Adding and committing changes if there are any
 git add -A
 
-IF ERRORLEVEL 1 (
+IF %ERRORLEVEL% NEQ 0 (
     echo No changes to commit in main branch
 ) ELSE (
     git commit -m "Update from openweather_api_test7.py"
@@ -70,4 +80,3 @@ echo Cleaning up Git repository
 git gc --prune=now
 
 pause
-
