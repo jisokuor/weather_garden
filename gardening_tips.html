@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Weather and Forecast</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #2E8B57;
+      color: white;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    h2 {
+      color: #2E8B57;
+      font-size: 1.8em;
+    }
+    h3 {
+      color: #555;
+      font-size: 1.4em;
+      margin-top: 20px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .mp3-links {
+      margin-top: 20px;
+    }
+    .clock {
+      text-align: center;
+      margin: 20px 0;
+    }
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Weather Forecast and Gardening Tips</h1>
+    <h2>Date: <span id="date"></span></h2>
+  </header>
+  <div class="container">
+    <div class="clock">
+      <h3>Current Time</h3>
+      <iframe src="https://indify.co/widgets/live/clock/mC6PDMEhkRcvdRHnRtuG" style="border:none;width:100%;height:100px;"></iframe>
+    </div>
+    <section>
+      <h3>Weather Forecast</h3>
+      <p id="weather-forecast"></p>
+      <canvas id="hourly-forecast"></canvas>
+    </section>
+    <section>
+      <h3>Gardening Tips</h3>
+      <p id="gardening-tips"></p>
+    </section>
+    <section class="mp3-links">
+      <h3>Download MP3 Files</h3>
+      <ul id="mp3-links">
+        <li><a href="forecast.mp3" download>Weather Forecast</a></li>
+        <li><a href="gardening_tips.mp3" download>Gardening Tips</a></li>
+      </ul>
+    </section>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#date').text(moment().format('MMMM Do YYYY'));
+
+      const apiKey = '918403ad1a1997bf8650f34d05c9c9a4';
+      const lat = '60.4720597';
+      const lon = '25.7878047';
+
+      function updateWeather() {
+        $.ajax({
+          url: `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`,
+          method: 'GET',
+          success: function(data) {
+            const forecast = data.list.slice(0, 8); // Example: getting the next 8 three-hour intervals
+            const labels = forecast.map(item => moment(item.dt_txt).format('HH:mm'));
+            const temps = forecast.map(item => item.main.temp);
+            const feelsLikeTemps = forecast.map(item => item.main.feels_like);
+
+            // Render weather forecast text
+            const weatherForecast = `
+              Temperature: ${forecast[0].main.temp} °C
+              Feels like: ${forecast[0].main.feels_like} °C
+              Weather: ${forecast[0].weather[0].description}
+              Wind speed: ${forecast[0].wind.speed} m/s
+              Humidity: ${forecast[0].main.humidity} %
+              Pressure: ${forecast[0].main.pressure} hPa
+            `;
+            $('#weather-forecast').html(weatherForecast.replace(/\n/g, '<br>'));
+
+            // Fetch the dynamic gardening tips
+            $.ajax({
+              url: 'dynamic_gardening_tips.txt',
+              method: 'GET',
+              success: function(gardeningTips) {
+                $('#gardening-tips').html(gardeningTips.replace(/\n/g, '<br>'));
+              },
+              error: function(error) {
+                console.error("Error fetching gardening tips", error);
+              }
+            });
+
+            // Render the chart
+            const ctx = document.getElementById('hourly-forecast').getContext('2d');
+            new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: labels,
+                datasets: [
+                  {
+                    label: 'Temperature (°C)',
+                    data: temps,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: false,
+                  },
+                  {
+                    label: 'Feels Like (°C)',
+                    data: feelsLikeTemps,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    fill: false,
+                  }
+                ]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: false
+                  }
+                }
+              }
+            });
+          },
+          error: function(error) {
+            console.error("Error fetching weather data", error);
+          }
+        });
+      }
+
+      updateWeather();
+    });
+  </script>
+</body>
+</html>
