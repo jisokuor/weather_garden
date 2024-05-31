@@ -4,6 +4,7 @@ import config
 import requests
 import json
 from gtts import gTTS
+import pygame
 from datetime import datetime
 
 # Display the system prompt for the user
@@ -14,6 +15,7 @@ Avoid using '*' in your output"""
 system_prompt_gardening = """
 As the Gardener of the Year of Porvoo, I offer expert gardening tips and recommendations based on the current weather forecast.
 Avoid using '*'in your output"""
+
 
 
 def query_ollama(prompt, system_message, model_url):
@@ -49,7 +51,7 @@ def test_openweathermap_api(api_key):
         response = requests.get(url)
         response.raise_for_status()  # Raises an exception for non-2xx status codes
         weather_data = response.json()
-        print("API key is working!", response)
+        print("API key is working!",response)
         return weather_data
     except requests.RequestException as e:
         print(f"Error while retrieving data: {e}")
