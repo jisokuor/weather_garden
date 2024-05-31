@@ -11,20 +11,20 @@ echo Checking installed packages
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 
 echo Switching to gh-pages branch
-git checkout gh-pages
+git checkout main
 
 echo Running Python script
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7.py
 
 REM Pulling latest changes from gh-pages
-git pull origin gh-pages --rebase
+git pull origin main --rebase
 
 REM Adding and committing changes
 git add -A
 git commit -m "Daily weather and gardening tips update"
 
 REM Pushing changes to gh-pages
-git push origin gh-pages
+git push origin main
 
 echo Cleaning up Git repository
 git gc --prune=now
