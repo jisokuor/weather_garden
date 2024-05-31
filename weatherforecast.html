@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Weather and Forecast</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #2E8B57;
+      color: white;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    h2 {
+      color: #2E8B57;
+      font-size: 1.8em;
+    }
+    h3 {
+      color: #555;
+      font-size: 1.4em;
+      margin-top: 20px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .mp3-links {
+      margin-top: 20px;
+    }
+    .clock {
+      text-align: center;
+      margin: 20px 0;
+    }
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<header>
+<h1>Weather Forecast and Gardening Tips</h1>
+<h2>Date: <span id="date"></span></h2>
+</header>
+<div class="container">
+<div class="clock">
+<h3>Current Time</h3>
+<iframe src="https://indify.co/widgets/live/clock/mC6PDMEhkRcvdRHnRtuG" style="border:none;width:100%;height:100px;"></iframe>
+</div>
+<section id="weather-forecast-section">
+<h3>Weather Forecast</h3>
+<p id="weather-forecast">
+        Temperature: 16°C<br/>
+        Feels like: 15°C<br/>
+        Weather: scattered clouds<br/>
+        Wind speed: 1.7 m/s<br/>
+        Humidity: 78%<br/>
+        Pressure: 1015 hPa<br/>
+</p>
+<canvas id="hourly-forecast"></canvas>
+</section>
+<section id="gardening-tips-section">
+<h3>Gardening Tips</h3>
+<p id="gardening-tips">Another lovely day in Porvoo, Finland! As the Gardener of the Year, I'm delighted to share my expert advice with you.
+
+**Watering:** With a relatively mild temperature and moderate humidity, today is an excellent day for watering your plants. Aim to provide about 1-2 inches of water per week, divided among multiple applications if needed. Make sure the soil has a chance to dry out slightly between waterings to prevent root rot. For newly planted seedlings or young plants, it's better to err on the side of caution and give them a gentle soaking instead of overwatering.
+
+**Shade:** With scattered clouds in the sky, you won't need to worry about providing shade for your plants just yet. In May, the sun is still relatively weak, so your plants will appreciate the natural sunlight. If you have plants that prefer partial shade, consider using a light-colored mulch or a sheer curtain to filter the sun's rays.
+
+**Planting:** This time of year is perfect for planting a variety of cool-season crops like lettuce, spinach, peas, and potatoes. The gentle temperatures and sufficient moisture will help them establish a strong root system. For flowering plants, you can start sowing seeds for marigolds, zinnias, and cosmos. These will thrive in the warm sunshine and can be enjoyed throughout the summer.
+
+**Tips:**
+
+1. **Fertilize wisely:** Since the soil is still warming up, avoid applying heavy fertilizers that can promote excessive growth. Instead, opt for a balanced fertilizer or a compost tea to provide your plants with essential nutrients.
+2. **Prune with care:** As plants start to grow, prune them carefully to maintain shape and encourage healthy growth. Remove any weak or spindly stems to direct the plant's energy towards more productive areas.
+3. **Pest watch:** Keep an eye out for aphids, slugs, and snails, which can become active in May. Use natural pest control methods like neem oil, soap solution, or hand-picking to minimize harm to your plants.
+4. **Compost corner:** Take this opportunity to add more compost to your piles. As the weather warms up, microorganisms will thrive, breaking down organic matter and creating a nutrient-rich soil amendment.
+
+Enjoy your gardening time in Porvoo today!</p>
+</section>
+<section class="mp3-links">
+<h3>Download MP3 Files</h3>
+<ul id="mp3-links">
+<li><a download="" href="forecast.mp3">Weather Forecast</a></li>
+<li><a download="" href="gardening_tips.mp3">Gardening Tips</a></li>
+</ul>
+</section>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    $(document).ready(function() {
+      $('#date').text(moment().format('MMMM Do YYYY'));
+
+      const apiKey = '918403ad1a1997bf8650f34d05c9c9a4';
+      const lat = '60.4720597';
+      const lon = '25.7878047';
+
+      function updateWeather() {
+        $.ajax({
+          url: `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`,
+          method: 'GET',
+          success: function(data) {
+            const forecast = data.list.slice(0, 8); // Example: getting the next 8 three-hour intervals
+            const labels = forecast.map(item => moment(item.dt_txt).format('HH:mm'));
+            const temps = forecast.map(item => item.main.temp);
+            const feelsLikeTemps = forecast.map(item => item.main.feels_like);
+
+            // Render weather forecast text
+            const weatherForecast = `
+              Temperature: ${forecast[0].main.temp} °C
+              Feels like: ${forecast[0].main.feels_like} °C
+              Weather: ${forecast[0].weather[0].description}
+              Wind speed: ${forecast[0].wind.speed} m/s
+              Humidity: ${forecast[0].main.humidity} %
+              Pressure: ${forecast[0].main.pressure} hPa
+            `;
+            $('#weather-forecast').html(weatherForecast.replace(/\n/g, '<br>'));
+
+            // Update gardening tips based on the weather
+            const gardeningTips = `
+              Based on the current weather conditions, here are your gardening tips:
+              - Water your plants early in the morning to avoid evaporation.
+              - Protect young plants from the sun during midday if it's hot.
+              - Check for pests as they are more active in warm weather.
+            `;
+            $('#gardening-tips').html(gardeningTips.replace(/\n/g, '<br>'));
+
+            // Render the chart
+            const ctx = document.getElementById('hourly-forecast').getContext('2d');
+            new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: labels,
+                datasets: [
+                  {
+                    label: 'Temperature (°C)',
+                    data: temps,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: false,
+                  },
+                  {
+                    label: 'Feels Like (°C)',
+                    data: feelsLikeTemps,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    fill: false,
+                  }
+                ]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: false
+                  }
+                }
+              }
+            });
+          },
+          error: function(error) {
+            console.error("Error fetching weather data", error);
+          }
+        });
+      }
+
+      updateWeather();
+    });
+  </script>
+</body>
+</html>
