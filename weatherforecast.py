@@ -12,7 +12,7 @@ import config  # Import the config module
 
 app = Flask(__name__)
 
-API_KEY = config.OPENWEATHER_API_KEY  # Use the API key from the config module
+API_KEY = config.OPEN_WEATHER_API_KEY  # Use the API key from the config module
 LAT = '60.4720597'
 LON = '25.7878047'
 
