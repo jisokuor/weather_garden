@@ -224,15 +224,15 @@ def update_index_html(mp3_files, daily_forecast, conditional_gardening_tips, dyn
         </div>
         <section>
             <h3>Weather Forecast</h3>
-            <p id="weather-forecast">{daily_forecast.replace('<br>', '<br>')}</p>
+            <p id="weather-forecast">{daily_forecast.replace('<p></p>', '<br>')}</p>
         </section>
         <section>
             <h3>Gardening Tips</h3>
-            <p id="gardening-tips">{conditional_gardening_tips.replace('<br>', '<br>')}</p>
+            <p id="gardening-tips">{conditional_gardening_tips.replace('<p></p>', '<br>')}</p>
         </section>
         <section>
             <h3>Dynamic Gardening Tips</h3>
-            <p id="dynamic-gardening-tips">{dynamic_gardening_tips.replace('<br>', '<br>')}</p>
+            <p id="dynamic-gardening-tips">{dynamic_gardening_tips.replace('<p></p>', '<br>')}</p>
         </section>
         <section class="mp3-links">
             <h3>Download MP3 Files</h3>

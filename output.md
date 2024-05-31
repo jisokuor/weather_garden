@@ -2,40 +2,12 @@
 ## Date: May 31, 2024
 
 ## Weather Forecast
-**Date and Time:**
+**Current Weather:**
+As of **2024-05-31 03:00:00**, the current temperature is **12.72°C**, feeling like **12.37°C**. It's been as warm as **15.52°C** earlier, and as cool as **12.72°C**. The atmospheric pressure is **1014** millibars, with a humidity level of **89%**.
 
-* Current time: 03:00:00 AM on May 31st, 2024
-* Next update: 06:00:00 AM on May 31st, 2024
+The sky is currently filled with **few clouds**, with visibility at an excellent **10 kilometers**. There's no precipitation expected, and the wind speed is moderate at **1.48 meters per second**, blowing from the east-northeast direction at **63 degrees**. The gusts are gentle at **3.3 meters per second**.
 
-**Temperature:**
-
-* Current temperature: 12.72 degrees Celsius (or -2.8 degrees Fahrenheit)
-* Feels like: 12.35 degrees Celsius (or -2.9 degrees Fahrenheit)
-* Minimum temperature recorded today: 12.72 degrees Celsius (or -2.8 degrees Fahrenheit)
-* Maximum temperature recorded today: 15.52 degrees Celsius (or 59.6 degrees Fahrenheit)
-
-**Weather Conditions:** 
-
-* Currently, the weather is mostly cloudy with few clouds.
-
-**Wind:**
-
-* Speed: 1.48 meters per second (or approximately 3.3 miles per hour)
-* Direction: From the east-northeast (63 degrees)
-* Gust speed: 3.3 meters per second (or approximately 7.4 miles per hour)
-
-**Visibility:** 
-
-* Visibility is 10 kilometers (6.2 miles) or better.
-
-**Humidity:** 
-* Relative humidity is 88%.
-
-**Pressure:** 
-* Atmospheric pressure at sea level: 1014 millibars
-* Ground-level atmospheric pressure: 1011 millibars
-
-(Note: The data will change as you move forward in time.)
+This information is accurate as of 03:00:00 on May 31st, 2024. Please note that this data is subject to change, and it's always a good idea to check for updates before making any decisions based on the weather forecast.
 ## Gardening Tips
 **Static Tips for May:**
 This is the main planting month. Plant potatoes, carrots, and beets. Harden off indoor-grown seedlings before transplanting them outside. Start planting summer flowers.
@@ -43,25 +15,26 @@ This is the main planting month. Plant potatoes, carrots, and beets. Harden off 
 **Weather Considerations:**
 The weather seems suitable for outdoor planting. Follow the expert recommendations for planting and gardening activities.
 ## Dynamic Gardening Tips
-As the Gardener of the Year of Porvoo, I'm delighted to share my expert gardening tips and recommendations for today in Porvoo, Finland. Based on the provided weather data, here are some advice and hints:
+What a lovely day in Porvoo, Finland! With temperatures ranging from 12.72°C to 24.45°C and plenty of sunshine, it's an ideal day for gardening.
 
 **Watering:**
-Considering the humidity is high (88%), it's essential to avoid overwatering your plants. Instead, focus on providing them with consistent moisture levels. Water your plants deeply once or twice a day, allowing the top 1-2 inches of soil to dry out between waterings.
+Since the humidity is relatively high at 89%, it's essential to avoid overwatering your plants. Stick to the usual watering schedule, but make sure the soil isn't waterlogged. You can always check the soil moisture by inserting a finger into the soil up to the knuckle. If it feels dry, it's time for a drink!
 
-**Shades:**
-With only few clouds in the sky and no direct sun, you can minimize the use of shades for most plants. However, if you have sensitive plants like ferns or impatiens, consider providing them with some gentle shading during the peak sun hours (around 9:00 AM).
+**Shading:**
+As the temperature rises, consider providing some shade for your plants that are sensitive to direct sunlight. You can use shading materials like row covers or even create a DIY trellis with a lightweight material.
 
-**Planting:**
-May is an excellent time to plant a variety of flowers, vegetables, and herbs in Porvoo's climate. Today, I recommend planting:
+**What to Plant Today:**
+May is an excellent month to plant a variety of vegetables and flowers in Porvoo! Consider sowing the following:
 
-1. Cool-season crops like broccoli, cauliflower, or kale, which thrive in temperatures between 12°C to 15°C (54°F - 59°F).
-2. Herbs like mint, basil, or thyme, which prefer well-drained soil and partial shade.
-3. Flowers like pansies, violas, or sweet alyssum, which enjoy the mild weather and can tolerate some morning dew.
+1. **Vegetables:** Radishes, spinach, lettuce, peas, carrots, beets, and herbs like parsley, dill, or chives.
+2. **Flowers:** Marigolds, zinnias, sunflowers, cosmos, and sweet alyssum.
 
-**Other Tips:**
+Remember to check the specific planting instructions for each variety of plant you're growing.
 
-1. **Soil preparation:** Before planting, make sure your soil is loose and has good drainage. You can mix in some organic matter like compost to improve its structure.
-2. **Pruning:** Take this opportunity to prune any overgrown plants or shrubs to maintain their shape and promote healthy growth.
-3. **Mulching:** Apply a thin layer of mulch (about 1-2 inches) around your plants to retain moisture, suppress weeds, and regulate soil temperature.
+**Additional Tips:**
 
-By following these tips, you'll be well on your way to creating a lush and thriving garden in Porvoo. Happy gardening!
+1. **Pruning:** Take this opportunity to prune any overgrown plants or shrubs to promote healthy growth and encourage new blooms.
+2. **Soil Preparation:** May is an excellent time to prepare your soil for the upcoming season. Add compost, well-rotted manure, or other organic matter to improve soil structure and fertility.
+3. **Pest Control:** Keep an eye out for pests like aphids, slugs, and snails, which can be more active in warm weather.
+
+Enjoy your gardening experience in Porvoo today!
