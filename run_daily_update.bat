@@ -16,8 +16,6 @@ G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip list
 echo Upgrading pip, setuptools, and wheel
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
 
-echo Installing required packages from requirements.txt
-G:\Pycharm\Pycharmprojects\Agents\python.exe -m pip install -r requirements.txt
 
 echo Running Python script
 G:\Pycharm\Pycharmprojects\Agents\.venv\Scripts\python.exe openweather_api_test7.py
