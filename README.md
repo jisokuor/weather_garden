@@ -1,80 +1,66 @@
-﻿# Weather Garden
+﻿markdown
+Kopioi koodi
+# Weather Garden
 
-Welcome to the Weather Garden project! This repository contains code and resources for providing daily weather updates and gardening tips.
-
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Introduction
-The Weather Garden project aims to provide users with daily weather forecasts and gardening tips. This can help gardeners plan their activities according to the weather conditions.
+Weather Garden is a web application that provides daily weather forecasts and gardening tips based on the weather data. The application fetches weather data from the OpenWeatherMap API and displays it along with gardening advice.
 
 ## Features
-- **Daily Weather Updates**: Get accurate weather forecasts for your location.
-- **Gardening Tips**: Receive helpful gardening tips tailored to the current weather.
-- **Audio Forecasts**: Listen to weather forecasts and gardening tips in MP3 format.
-- **Web Interface**: Access weather updates and tips via a web interface.
+
+- Daily weather forecast
+- Dynamic gardening tips based on weather
+- Static gardening tips for the month of May
+- Interactive weather forecast chart
 
 ## Installation
-To get started with the Weather Garden project, follow these steps:
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/jisokuor/weather_garden.git
-    cd weather_garden
-    ```
+1. **Clone the repository:**
 
-2. Set up a virtual environment:
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-    ```
+   ```bash
+   git clone https://github.com/jisokuor/weather_garden.git
+   cd weather_garden
 
-3. Install the required dependencies:
-    ```sh
-    pip install -r requirements.txt
-    ```
+2. **Create a virtual environment and activate it:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
-## Usage
-To use the Weather Garden project, follow these steps:
+3. **Install the required dependencies:**
 
-1. Run the main script to get daily updates:
-    ```sh
-    python main.py
-    ```
+   ```bash
+   pip install -r requirements.txt
+   
+4. **Create a .env file in the project root directory and add your OpenWeatherMap API key:**
+   ```bash
+   OPENWEATHER_API_KEY=your_api_key_here
 
-2. Access the web interface by opening `index.html` in your web browser.
+**Usage**
 
-## Project Structure
-The project structure is organized as follows:
+1. **Run the daily update script to fetch weather data and update gardening tips:**
 
-weather_garden/
-│
-├── Lib/
-│ └── site-packages/ # External packages
-│
-├── Scripts/ # Helper scripts
-│
-├── forecast.mp3 # Audio file for weather forecast
-├── gardening_tips.mp3 # Audio file for gardening tips
-├── index.html # Web interface
-├── ollamamodels.py # Weather prediction model
-├── openweather_api_test7.py # Test script for OpenWeather API
-├── output.md # Markdown output file
-├── README.md # Project overview
-├── requirements.txt # List of dependencies
-└── main.py # Main script
+   ```bash
+   cmd.exe /c run_daily_update.bat
+2. **Start the Flask server to serve the application:**
 
+   ```bash
+   python weatherforecast.py
+3. **Open your web browser and navigate to:**
+   ```bash
+   http://127.0.0.1:5000/
 
-## Contributing
-We welcome contributions to the Weather Garden project. To contribute, follow these steps:
+**Environment Variables**
 
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-    ```sh
+   **OPENWEATHER_API_KEY:** Your API key for accessing the OpenWeatherMap API.
+
+**Technologies and Libraries**
+ * Python: The main programming language.
+ * Flask: A lightweight WSGI web application framework. 
+ * Requests: A simple HTTP library for Python. 
+ * BeautifulSoup4: A library for parsing HTML and XML documents. 
+ * Matplotlib: A plotting library for the Python programming language. 
+ * Dotenv: A library to load environment variables from a .env file.
+
+ * Contributors
+Jarkko Iso-Kuortti - Initial work
+License
+ * This project is licensed under the MIT License - see the LICENSE file for details.
 
